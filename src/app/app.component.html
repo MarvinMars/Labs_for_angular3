@@ -9,10 +9,10 @@
   </div>
   <hr>
   <div *ngIf="!flagLoad; else loading">
-    <div class="card" *ngFor="let post of posts">
+    <div class="card" *ngFor="let post of posts | sortBy: 'asc':'title'">
       <p>
-        <span [class.completed]="post.completed">{{post.title | titlecase}}</span>
-        <span>
+      <span [class.completed]="post.completed"># {{post.id}} - {{post.title | titlecase}}</span>
+      <span>
         <button class="btn btn-danger" (click)="removePost(post.id)">Удалить</button>
        <button class="btn" [disabled]="post.completed" (click)="completedPost(post.id)">Завершить</button>
      </span>
